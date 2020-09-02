@@ -3,6 +3,10 @@ from process import process
 import numpy as np
 import cv2
 
+'''
+Why pipes and not shared memory? Because I'm lazy, and didn't want to deal with locking and timing issues. 
+'''
+
 def recv_frames(recv_pipe):
     while recv_pipe.poll(0.04):
         buf = np.ndarray(shape=480*640, dtype=np.uint8)
